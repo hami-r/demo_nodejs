@@ -1,5 +1,8 @@
 const express = require('express');
-const productRoute = require('./src/routes/product.route');
+require('dotenv').config();
+const productRoutes = require('./src/routes/product.routes');
+const userRoutes = require('./src/routes/user.routes');
+
 const app = express();
 app.use(express.json());
 
@@ -9,7 +12,5 @@ app.listen(PORT,()=>{
     console.log(`Server is listening on port ${PORT}`);
 })
 
-app.use(productRoute);
-app.get("/",(req,res)=>{
-    res.send("Hiiiiiiiiiii");
-})
+app.use(productRoutes);
+app.use(userRoutes);
